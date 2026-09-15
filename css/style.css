@@ -68,14 +68,22 @@ body{
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* 首頁四個「手指」縮放提示。使用原首頁手指裁切素材，避免把整張卡片一起放大。 */
-.finger-overlays{position:absolute;inset:0;z-index:7;pointer-events:none;display:none}
-.stage.home-motion .finger-overlays{display:block}
-.finger{
+.finger-overlays{
   position:absolute;
+  inset:0;
+  z-index:7;
+  pointer-events:none;
+  display:none;
+  overflow:visible;
+}
+.stage.home-motion .finger-overlays{display:block}
+.stage.home-motion .finger{
+  position:absolute;
+  display:block;
   background-repeat:no-repeat;
   background-size:100% 100%;
   transform-origin:center center;
-  animation:fingerPulse 1.55s ease-in-out infinite;
+  animation:fingerPulseHome 1.20s ease-in-out infinite !important;
   will-change:transform,filter;
   filter:drop-shadow(0 2px 2px rgba(0,0,0,.22));
 }
@@ -83,9 +91,15 @@ body{
 .finger.peacock{left:83.79%;top:64.52%;width:7.62%;height:5.40%;background-image:url('../assets/finger_peacock.webp?v=5')}
 .finger.koala{left:36.91%;top:87.11%;width:8.30%;height:7.10%;background-image:url('../assets/finger_koala.webp?v=5')}
 .finger.owl{left:83.79%;top:87.37%;width:7.62%;height:6.84%;background-image:url('../assets/finger_owl.webp?v=5')}
-@keyframes fingerPulse{
-  0%,100%{transform:scale(.92) translateY(0);filter:drop-shadow(0 2px 2px rgba(0,0,0,.20))}
-  50%{transform:scale(1.13) translateY(-1.5%);filter:drop-shadow(0 3px 4px rgba(0,0,0,.30))}
+@keyframes fingerPulseHome{
+  0%,100%{
+    transform:scale(.84);
+    filter:drop-shadow(0 2px 2px rgba(0,0,0,.18));
+  }
+  50%{
+    transform:scale(1.16);
+    filter:drop-shadow(0 4px 5px rgba(0,0,0,.32));
+  }
 }
 
 /* 動物攻略選單頁：只顯示「手指」本體。
@@ -245,6 +259,6 @@ body{
   .stage{width:min(100vw,calc(100dvh * 2 / 3));height:min(100dvh,calc(100vw * 3 / 2));max-width:100vw;max-height:100dvh}
 }
 @media (prefers-reduced-motion:reduce){
-  .sparkle,.finger,.page-enter{animation:none!important}
+  .sparkle,.page-enter{animation:none!important}
   .hotspot{transition:none}
 }
