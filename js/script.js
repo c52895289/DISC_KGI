@@ -4,7 +4,7 @@ const HOTSPOTS = document.getElementById('hotspots');
 const STAGE = document.getElementById('stage');
 const LOADING = document.getElementById('loading');
 const MENU_FINGERS = document.getElementById('menuFingerOverlays');
-const FINGER_ASSETS = ['assets/finger_tiger.webp?v=8','assets/finger_peacock.webp?v=8','assets/finger_koala.webp?v=8','assets/finger_owl.webp?v=8'];
+const FINGER_ASSETS = ['assets/finger_tiger.webp?v=10','assets/finger_peacock.webp?v=10','assets/finger_koala.webp?v=10','assets/finger_owl.webp?v=10'];
 const BGM = document.getElementById('bgm');
 const MUSIC = document.getElementById('musicControl');
 let audioReady = false;
@@ -12,7 +12,7 @@ let musicOn = false;
 
 const PAGES = {
   home:{
-    img:'assets/home.webp?v=6',
+    img:'assets/home.webp?v=10',
     alt:'DISC 增員攻心術首頁',
     spots:[
       {label:'進入 D 型老虎攻略',x:2.5,y:46.8,w:47.5,h:22.0,to:'tigerMenu'},
@@ -122,7 +122,7 @@ async function ensureMusic(autoplay=true){
   if(!BGM.src){
     BGM.volume = 0.45;
     BGM.preload = 'auto';
-    BGM.autoplay = false;
+    BGM.autoplay = true;
     BGM.src = MUSIC_SRC;
     BGM.load();
   }
@@ -154,12 +154,13 @@ MUSIC.addEventListener('click',async(e)=>{
   }
 });
 
-// 首頁一進來就顯示音符並嘗試自動播放；若瀏覽器擋有聲 autoplay，
-// 保留音符讓使用者點一下即可播放。
+// 首頁載入立即顯示音符並嘗試自動播放。
+// 注意：Chrome/手機瀏覽器若禁止「有聲自動播放」，瀏覽器本身會擋住 play()；
+// 此時第一次點擊頁面或音符即可立即補播。
 showMusicControl();
+BGM.autoplay = true;
 ensureMusic(true);
 
-// 若瀏覽器首次載入禁止有聲 autoplay，使用者第一次點擊頁面時立即補播。
 document.addEventListener('pointerdown',()=>{
   if(BGM.paused) ensureMusic(true);
 },{once:true,passive:true});

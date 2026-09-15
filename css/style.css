@@ -99,8 +99,8 @@ body{
 .finger.koala{left:36.91%;top:87.11%;width:8.30%;height:auto}
 .finger.owl{left:83.79%;top:87.37%;width:7.62%;height:auto}
 @keyframes fingerPulseHome{
-  0%,100%{transform:scale(.78)}
-  50%{transform:scale(1.18)}
+  0%,100%{transform:scale(.95)}
+  50%{transform:scale(1.05)}
 }
 
 /* 動物攻略選單頁：只顯示「手指」本體。
