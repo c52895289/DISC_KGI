@@ -4,7 +4,7 @@ const HOTSPOTS = document.getElementById('hotspots');
 const STAGE = document.getElementById('stage');
 const LOADING = document.getElementById('loading');
 const MENU_FINGERS = document.getElementById('menuFingerOverlays');
-const FINGER_ASSETS = ['assets/finger_tiger.webp?v=6','assets/finger_peacock.webp?v=6','assets/finger_koala.webp?v=6','assets/finger_owl.webp?v=6'];
+const FINGER_ASSETS = ['assets/finger_tiger.webp?v=8','assets/finger_peacock.webp?v=8','assets/finger_koala.webp?v=8','assets/finger_owl.webp?v=8'];
 const BGM = document.getElementById('bgm');
 const MUSIC = document.getElementById('musicControl');
 let audioReady = false;
